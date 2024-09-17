@@ -166,9 +166,11 @@ public extension XCScheme {
                                        value: nil,
                                        attributes: attributes)
             super.writeXML(parent: element)
-            let entries = element.addChild(name: "BuildActionEntries")
-            for entry in buildActionEntries {
-                entries.addChild(entry.xmlElement())
+            if !buildActionEntries.isEmpty {
+                let entries = element.addChild(name: "BuildActionEntries")
+                for entry in buildActionEntries {
+                    entries.addChild(entry.xmlElement())
+                }
             }
             return element
         }
